@@ -18,5 +18,5 @@ document.getElementById("saveBtn").addEventListener("click", () => {
 
   localStorage.setItem("forms", JSON.stringify([formData]));
 
-  alert("Form data saved!");
+  alert("Form saved!");
 });
