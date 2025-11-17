@@ -1,28 +1,22 @@
-//your JS code here. If required.
-const form = document.getElementById("userForm");
-const nameInput = document.getElementById("name");
-const emailInput = document.getElementById("email");
-const ageInput = document.getElementById("age");
-
 window.addEventListener("load", () => {
-  const savedData = JSON.parse(localStorage.getItem("formData"));
+  const saved = JSON.parse(localStorage.getItem("forms"));
 
-  if (savedData) {
-    nameInput.value = savedData.name || "";
-    emailInput.value = savedData.email || "";
-    ageInput.value = savedData.age || "";
+  if (saved && saved.length > 0) {
+    const data = saved[0];
+    document.getElementById("name").value = data.name || "";
+    document.getElementById("email").value = data.email || "";
+    document.getElementById("phone").value = data.phone || "";
   }
 });
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault(); 
-
+document.getElementById("saveBtn").addEventListener("click", () => {
   const formData = {
-    name: nameInput.value,
-    email: emailInput.value,
-    age: ageInput.value,
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value
   };
 
-  localStorage.setItem("formData", JSON.stringify(formData));
+  localStorage.setItem("forms", JSON.stringify([formData]));
+
   alert("Form data saved!");
 });
