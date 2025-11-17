@@ -1,4 +1,4 @@
-window.addEventListener("load", () => {
+document.addEventListener("load", () => {
   const saved = JSON.parse(localStorage.getItem("forms"));
 
   if (saved && saved.length > 0) {
